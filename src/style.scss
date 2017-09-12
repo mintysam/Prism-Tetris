@@ -1,0 +1,281 @@
+/* Scss Document */
+$color-dark-grey : #505454;
+
+html{ padding: 0; margin: 0;}
+body{
+	background-size: cover;
+	padding: 0;
+	margin: 0;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	width: 100%;
+	background: url(images/1.jpg) no-repeat center center fixed;
+}
+#pageCover{
+	height: 100vh;
+	min-width: 1024px; 
+	position: relative;
+	background: url(images/1.jpg) no-repeat center center fixed;
+
+	#logo{
+		text-align: center;
+	}
+	
+	#contentCover{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-height: 88vh;
+
+		#welcome{
+			text-align: center;
+			color: #FFF;
+			display: none;
+			h1{ font-weight: normal!important; font-size: 3em; }
+			a{
+				background: #3c7866;
+				color: #FFF;
+				padding: 15px 35px;
+				text-transform: uppercase;
+				text-decoration: none;
+				border-radius: 30px;
+				font-size: 1.7em;
+			}
+		}
+
+		#userDetails{
+			text-align: center;
+			display: none;
+			input[type=text]{ 
+				padding: 15px 40px;
+				border: none;
+				opacity: .9;
+				text-align: center;
+				font-size: 1.5em;
+				display: inline-block;
+				background: rgba(12, 8, 8, 0.79);
+				color: #FFF;
+			}
+			div{
+				margin-top: 2em;		
+				a{
+					background: #3c7866;
+					color: #FFF;
+					padding: 15px 35px;
+					text-transform: uppercase;
+					text-decoration: none;
+					border-radius: 30px;
+					font-size: 1.7em;
+				}
+			}
+		}
+
+		#tetris{
+			// padding: 2vw;
+			
+			min-width: 94vw;
+			position: relative;
+			display: none;
+			margin: 0 auto;
+			
+			#tetrisMessage{
+				position: absolute;
+				background: #f50125;
+				color: #FFF;
+				min-width: 55vw;
+				min-height: 12vh;
+				top: 165px;
+				left: 94px;
+				display: none;
+				opacity: 0;
+				padding: 20px;
+				
+				.btnClose{ position: absolute; top: 2px; right: 2px; cursor: pointer; }
+				.msg{
+					// .ttrisMessage{ padding: 40px 20px 20px; color: #FFF; box-shadow: 3px 7px 13px 2px rgba(175, 39, 39, 0.3); }
+					.ttrisMessage{ 
+						padding: 40px 20px 20px;  
+						box-shadow: 3px 7px 13px 2px rgba(175, 39, 39, 0.3); 
+						font-size: 1.5em;
+					}
+					.lineMsg{
+						text-align: center;
+						h3{ font-weight: bold; margin-top: 10px; margin-bottom: 0; font-size: 1.3em; }
+						h4{ margin-top: 4px; font-weight: normal; font-size: 1.1em;}
+						h2{ margin-top: 4px; font-weight: normal; margin-bottom: 0;}
+						h5{ margin-top: 4px; font-weight: normal; font-size: 1.1em; }
+					}
+					.spclButtons{
+						padding: 18px;
+						text-align: center;
+						a{
+							background: rgba(12, 8, 8, 0.79);
+							color: #FFF;
+							padding: 8px 16px;
+							text-decoration: none;
+							border-radius: 30px;
+							margin-right: 10px;
+
+						}
+					}
+				}
+			}
+			
+			#timer{
+				margin-right: 20px;
+				float: left;
+				font-size: 22px;
+				color: #FFF;
+				min-width: 90px;
+			}
+			
+			#gridCover{				
+				background: #d9d5d3;
+				float: left;
+				padding: 15px;				
+				margin-right: 20px;
+				
+				#grid{
+					table{
+						background: #FFF!important;
+						tr{
+							td{
+								width: 3.4vw;
+								height: 3.4vw;
+							}
+						}
+					}
+				}
+				#colonnadx{
+					padding-right: 0;
+					width: 132px;
+					text-align: center; 
+					font-size: 14px; 
+					padding-top: 10px;
+					
+					#next{
+						text-align: center;
+						color: $color-dark-grey;
+						table {
+							background-color: white;
+							tr{
+								td{
+									width: 1.6em;
+									height: 1.6em;
+								}
+							}
+						}
+					}
+					
+					#stats{
+						text-align: center;
+						margin-top: 112px;
+						font-size: 16px;
+						> div{text-align: center; color: $color-dark-grey;}
+					}
+					
+					#info{
+						padding-left: 36px;
+					}
+				}
+			}
+			
+			#touchControls{
+				float: left;
+				position: relative;
+				width: 24vw;
+				height: 444px;
+				img.ctrls{
+					height: 80px;
+					width: 78px;
+					// height: 56px;
+					// width: 56px;
+					position: absolute;
+					bottom: 0;
+					cursor: pointer;
+					&.left{
+						left: 0;	
+					}
+					&.up{
+						bottom: 84px;
+						left: 81px;
+					}
+					&.down{
+						left: 81px;
+					}
+					&.right{
+						left: 161px;
+					}
+				}
+			}	
+		}
+
+		#leaderBoard{
+			display: none;
+			min-height: 54vh;
+			color: #FFF;
+			>div{	
+				
+				display: inherit;
+				width: 70vw;
+				margin:auto;
+				h1{
+					font-weight: normal!important; 
+					font-size: 3em;
+					text-transform: uppercase;
+					text-align: center;
+				}
+				#leaderBoardCntntWrap{
+					background: rgba(12, 8, 8, 0.79);
+					opacity: .9;
+					padding: 4vw 0;
+					.content{
+						font-size: 1.4em;
+					}
+				}
+				.restart{
+					padding: 35px 10px;
+					text-align: center;
+					a{
+						background: #f50125;
+						color: #FFF;
+						padding: 10px 30px;
+						text-transform: uppercase;
+						text-decoration: none;
+						border-radius: 30px;
+						font-size: 1.7em;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+//Media query
+@media only screen and (max-device-width : 768px) {
+	#pageCover{
+		#contentCover{
+			#tetris{
+				#gridCover{
+					#grid{
+						table{
+							tr{
+								td{
+									// width: 2.2em;
+									// height: 2.2em;
+								}
+							}
+						}
+					}
+
+					#colonnadx{
+						#stats{
+							
+						}	
+					}
+				}
+			}			
+		}
+	}	
+} 

@@ -1,0 +1,101 @@
+body{
+	/*background: url("../imgs/back.gif") repeat;*/
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+html{
+	height:80%;
+}
+
+#tetris {
+	margin:2em auto;
+	width:28em;
+	overflow:hidden;
+}
+
+#grid {
+	float:left;
+}
+
+#grid table, #next table {
+	background:none !important;
+}
+
+#grid td, #next td {
+	width:1.2em;
+	height:1.2em;
+	text-align:left;
+	/*-moz-border-radius:0.5em;*/
+}
+
+#colonnadx{
+	width:112px;
+	height:384px;
+	float:right;
+	padding-right:20px;
+	border-right:1px dotted #CCC;
+	font-size:12px;
+}
+
+#next {
+	margin-bottom:1em;
+	text-align:left;
+}
+
+#stats {
+	margin-bottom:1em;
+	text-align:left;
+}
+
+#stats div {
+	text-align:left;
+}
+
+#cmd {
+	text-align:left;
+	margin-top:95px;
+}
+
+#cmd input {
+	margin-bottom:1em;
+}
+
+#info {
+	text-align:left;
+}
+
+#info input {
+	text-align:center;
+}
+
+#src {
+	color:#FFF;
+}
+
+.button01{
+	background:#2f2f2f;
+	border:0 none;
+	width:50px;
+	height:17px;
+	color:#FFF;
+	padding-bottom:3px;
+	float:left;
+}
+
+.button02{
+	background:#2f2f2f;
+	border:0 none;
+	width:50px;
+	height:17px;
+	color:#FFF;
+	padding-bottom:3px;
+	float:right;
+	margin-top: -15px;
+}
+
+.button01:hover,
+.button02:hover{
+	background:#FFF;
+	color:#000;
+	cursor:pointer;
+}
