@@ -1,4 +1,3 @@
-#// $CConnection->Configure("localhost", "prismads_games", "prismads_game", "game!@#");
 
 /data
 /services/common/CCommon.php
