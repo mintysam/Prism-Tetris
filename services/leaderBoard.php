@@ -3,7 +3,7 @@ session_start();
 @require_once './common/CCommon.php';
 $wFlagErr = false;
 $CCommon = new CCommon();
-$CPrjFunctions = $CCommon->mfnGetPrjClass();
+
 $ret = array();
 if (!isset($_GET['A']) or !isset($_GET['B']) or !isset($_GET['C'])) ://If not logged in
     die("Not a valid request");

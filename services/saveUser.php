@@ -3,7 +3,7 @@ session_start();
 @require_once './common/CCommon.php';
 $wFlagErr = false;
 $CCommon = new CCommon();
-$CPrjFunctions = $CCommon->mfnGetPrjClass();
+
 $ret = array();
 if (trim($_POST['txtUser'])=="" or !isset($_POST['hdnTime']) or !isset($_GET['lines']) or !isset($_GET['level']) or !isset($_GET['score'])) ://If not logged in
     die("Not a valid entry");
