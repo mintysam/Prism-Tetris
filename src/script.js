@@ -23,7 +23,7 @@ JQ(function () {
 	fnStartAll();
 });
 
-function fnStartAll(){
+function fnStartAll() {
 
 	myTimer = JQ('#timer');
 	JQ(myTimer).text("00:00:00");
@@ -34,15 +34,15 @@ function fnStartAll(){
 
 	fnSetTouchButtons();
 
-	(lxUserName.trim()=="")?fnShowWelcome():fnShowTetris();	
-	
-	JQ("#frmUser").submit(function(){
+	(lxUserName.trim() == "") ? fnShowWelcome() : fnShowTetris();
+
+	JQ("#frmUser").submit(function () {
 		fnShowTetris();
 		return false;
 	});
 
 	fnOrientatoinChange();
-	window.addEventListener("orientationchange", function() {
+	window.addEventListener("orientationchange", function () {
 		// Announce the new orientation number
 		console.log("A");
 		fnOrientatoinChange();
@@ -51,9 +51,9 @@ function fnStartAll(){
 
 	document.addEventListener('touchmove', function (event) {
 		if (event.scale !== 1) { event.preventDefault(); }
-	  }, false);
+	}, false);
 
-	  JQ("#tetris, #gridCover").nodoubletapzoom();
+	JQ("#tetris, #gridCover").nodoubletapzoom();
 
 	// JQ("#touchControls").click(function(e){
 	// 	e.preventDefault();
@@ -70,10 +70,10 @@ function fnStartAll(){
 	// 	  event.preventDefault();
 	// 	}
 	//   }, false);
-	
+
 }
 
-function fnOrientatoinChange(){
+function fnOrientatoinChange() {
 	JQ("#touchControls").height(0).height(
 		JQ("#tetris").height()
 	);
@@ -97,15 +97,15 @@ function fnCloseMessage() {
 
 function fnGameOver() {
 	if (lxGameOver == "1") {
-		
+
 		fnSaveDetails();
 		var mess = "Game over<br />Total time taken : " + lxTime;
 		fnShowMessage(
-			"<div class='ttrisMessage'>"+mess+"</div>" +
-			"<div class='spclButtons'>"+
-				"<a href='javascript:fnRestartFresh(this)'>Restart</a>"+
-				"<a href='javascript:fnRestartUser(this)'>Improve score</a>"+
-				"<a href='javascript:fnShowLeaderBoard()'>Leaderboard</a>"+
+			"<div class='ttrisMessage'>" + mess + "</div>" +
+			"<div class='spclButtons'>" +
+			"<a href='javascript:fnRestartFresh(this)'>Restart</a>" +
+			"<a href='javascript:fnRestartUser(this)'>Improve score</a>" +
+			"<a href='javascript:fnShowLeaderBoard()'>Leaderboard</a>" +
 			"</div>"
 		);
 	}
@@ -143,15 +143,15 @@ function fnLineMade(lxLine) {
 			mess1 = "Benefit : " + lxLine;
 	}
 
-	if(lxLine<=6){
+	if (lxLine <= 6) {
 		fnShowMessage(
-						"<div class='lineMsg'>"
-							+ "<h3>Dispute Resolution Center</h3><h4>brings you..</h4>"
-							+ "<h2>"+ mess1 +"</h2>"
-							+ "<h5>"+ mess2 +"</h5>" +
-						"</div>"
+			"<div class='lineMsg'>"
+			+ "<h3>Dispute Resolution Center</h3><h4>brings you..</h4>"
+			+ "<h2>" + mess1 + "</h2>"
+			+ "<h5>" + mess2 + "</h5>" +
+			"</div>"
 		);
-	}		
+	}
 }
 
 function myAdd() {
@@ -199,29 +199,36 @@ function fnSetTouchButtons() {
 		tetris.moveDown();
 	});
 
-			
+
 	JQ("#touchControls .ctrls, #touchControls").nodoubletapzoom();
-	
+
 
 }
 
-function fnShowWelcome(){
+function fnShowWelcome() {
 	JQ("#welcome").delay(1000).fadeIn();
 }
 
-function fnShowUsername(){
+function fnShowUsername() {
 	JQ("#welcome").fadeOut();
 	JQ("#userDetails").delay(1000).fadeIn();
 }
 
-function fnShowTetris(){
-	if(JQ.trim(JQ("#txtUser").val())==""){
+function fnShowTetris() {
+	if (JQ.trim(JQ("#txtUser").val()) == "") {
 		alert("Please specify your name to begin");
 		JQ("#txtUser").focus();
 		return false;
 	}
+	if (!isEmail(JQ.trim(JQ("#txtEmail").val()))) {
+		alert("Please specify your email to begin");
+		JQ("#txtEmail").focus();
+		return false;
+	}
 
 	lxUserName = JQ.trim(JQ("#txtUser").val());
+	lxUserEmail = JQ.trim(JQ("#txtEmail").val());
+
 	JQ("#userDetails").fadeOut();
 	JQ("#tetris").delay(1000).fadeIn();
 	setTimeout(function () {
@@ -231,45 +238,50 @@ function fnShowTetris(){
 
 }
 
-function fnShowLeaderBoard(){	
+function fnShowLeaderBoard() {
 	JQ("#tetris").fadeOut();
 	JQ("#leaderBoard").delay(1000).fadeIn();
 	fnGetLeaderBoard();
 }
 
-function fnSaveDetails(){
+function fnSaveDetails() {
 
 	JQ("#hdnTime").val(lxTime);
 	var url = "./services/saveUser.php?";
-	url += "lines="+lxLine;
-	url += "&level="+ (tetris.level+1);
-	url += "&score="+ (tetris.score);
+	url += "lines=" + lxLine;
+	url += "&level=" + (tetris.level + 1);
+	url += "&score=" + (tetris.score);
 	var dataForm = JQ("#frmUser").serialize();
-	JQ.post( url, dataForm, function( data ) {
-		console.log( data );
-	});	
+	JQ.post(url, dataForm, function (data) {
+		console.log(data);
+	});
 }
 
-function fnRestartFresh(obj){
-	JQ(obj).attr("href","javascript:void(0)");
-	setTimeout(function(){
+function fnRestartFresh(obj) {
+	JQ(obj).attr("href", "javascript:void(0)");
+	setTimeout(function () {
 		location.replace(location.origin + location.pathname);
 	}, 1500);
 }
-function fnRestartUser(obj){
-	JQ(obj).attr("href","javascript:void(0)");
-	setTimeout(function(){
-		location.replace(location.origin + location.pathname +"?user="+lxUserName);
+function fnRestartUser(obj) {
+	JQ(obj).attr("href", "javascript:void(0)");
+	setTimeout(function () {
+		location.replace(location.origin + location.pathname + "?user=" + lxUserName + "&email=" + lxUserEmail);
 	}, 1500)
 }
-function fnGetLeaderBoard(){
+function fnGetLeaderBoard() {
 	// JQ(obj).attr("href","javascript:void(0)");
 	var url = "./services/leaderBoard.php?";
-	url += "A="+1;
-	url += "&B="+ 1;
-	url += "&C="+ 1;
-	JQ.get( url, function( data ) {
-		console.log( data );
+	url += "A=" + 1;
+	url += "&B=" + 1;
+	url += "&C=" + 1;
+	JQ.get(url, function (data) {
+		console.log(data);
 		JQ("#leaderBoard .content").html(data);
-	});	
+	});
+}
+
+function isEmail(email) {
+	var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
 }

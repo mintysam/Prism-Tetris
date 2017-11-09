@@ -8,6 +8,7 @@
 	<script>
 		var JQ = $.noConflict();
 		var lxUserName = "<?php echo $_GET['user']; ?>";
+		var lxUserEmail = "<?php echo $_GET['email']; ?>";
     </script>
     <script type="text/javascript" src="src/tquery.js"></script>
     <script type="text/javascript" src="src/tetris.js"></script>
@@ -35,6 +36,7 @@
             <div id="userDetails">
                 <form name="frmUser" id="frmUser">
                     <input type="text" id="txtUser" name="txtUser" value="<?php echo $_GET['user']; ?>" placeholder="username" />
+                    <br/><input type="text" class="email" id="txtEmail" name="txtEmail" value="<?php echo $_GET['email']; ?>" placeholder="email" />
                     <div><a href="javascript:fnShowTetris()">Start Now</a></div>
                     <input type="hidden" id="hdnTime" name="hdnTime" />
                 </form>
